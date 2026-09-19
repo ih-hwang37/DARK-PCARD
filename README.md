@@ -5,10 +5,10 @@ Knee Ultrasound Point Clouds**, together with the PCARD dynamic-graph encoder,
 its training pipeline, an inference-time point-cloud filter, and a small
 pretrained PCARD checkpoint.
 
-DARK estimates coarse rigid registration between sparse, noisy 3D point clouds
+DARK estimates coarse aligment matrices (registration) between sparse, noisy 3D point clouds
 reconstructed from freehand knee ultrasound. PCARD learns pointwise geometric
 features from dynamic k-nearest-neighbour graphs and can be used either to
-filter a point cloud or as DARK's embedding network.
+filter a point cloud (likewise to DG-PPU) or as DARK's embedding network.
 
 > Hwang, I., Mellon, S., and Tu, S. J. (2026). **DARK: Dynamic Graphs Based
 > Angle-Aware Registration of Knee Ultrasound Point Clouds.** In *Simplifying
