@@ -1,0 +1,38 @@
+data:
+  # Patient data are intentionally absent. Replace with a private local path.
+  root: "path/to/private/csv_point_clouds"
+  num_points: 1024
+  iterations: 40
+  sampling: "random"
+  test_fraction: 0.2
+  cache_dir: "outputs/cache"
+
+model:
+  k: 20
+  feature_dim: 128
+
+training:
+  batch_size: 32
+  learning_rate: 0.0005
+  num_epochs: 100
+  tau_nce: 0.2
+  num_neg: 5
+  lambda_smooth: 0.1
+  lambda_cov: 1.0
+  lambda_scatter: 0.5
+  scatter_threshold: 0.25
+  edge_drop_rate: 0.1
+  cov_warmup_epochs: 5
+  patience: 10
+  seed: 42
+
+output:
+  checkpoint: "outputs/pcard_pretrained.pth"
+  split_manifest: "outputs/split_manifest.json"
+
+wandb:
+  # disabled, offline, or online. Never place an API key in this file.
+  mode: "disabled"
+  project_name: "PCARD"
+  entity: null
+  run_name: null

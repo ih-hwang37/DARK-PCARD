@@ -1,0 +1,12 @@
+# Install a PyTorch build appropriate for your CPU/CUDA platform first.
+# See https://pytorch.org/get-started/locally/
+torch>=2.2
+torch-geometric>=2.5
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+h5py>=3.9
+scikit-learn>=1.3
+PyYAML>=6.0
+tqdm>=4.66
+tensorboardX>=2.6

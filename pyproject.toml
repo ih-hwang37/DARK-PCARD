@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dark-pcard"
+version = "0.1.0"
+description = "DARK knee-ultrasound point-cloud registration with the PCARD dynamic-graph encoder"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+license = {file = "LICENSE"}
+authors = [
+  {name = "Injune Hwang"},
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Medical Science Apps.",
+]
+dependencies = [
+  "h5py>=3.9",
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "PyYAML>=6.0",
+  "scikit-learn>=1.3",
+  "scipy>=1.10",
+  "tensorboardX>=2.6",
+  "torch>=2.2",
+  "torch-geometric>=2.5",
+  "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+tracking = ["wandb>=0.16"]
+test = ["pytest>=8.0"]
+
+[project.scripts]
+pcard-train = "train_pcard:main"
+pcard-filter = "filter_with_pcard:main"
+
+[tool.setuptools]
+py-modules = ["train_pcard", "filter_with_pcard"]
+
+[tool.setuptools.packages.find]
+include = ["pcard*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

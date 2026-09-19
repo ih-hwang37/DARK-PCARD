@@ -1,0 +1,33 @@
+name: release checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  static-and-privacy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile Python sources
+        run: python -m compileall -q pcard dark train_pcard.py filter_with_pcard.py
+      - name: Check release layout, privacy exclusions, and model checksum
+        run: python -m unittest tests.test_release_layout
+
+  checkpoint-compatibility:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install CPU model-test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install torch-geometric pytest
+      - name: Load pretrained PCARD checkpoint strictly
+        run: python -m pytest tests/test_model.py

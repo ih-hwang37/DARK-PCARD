@@ -1,0 +1,48 @@
+# Private or derived data
+data/
+new_data/
+filtered_data/
+test_data/
+*.h5
+*.hdf5
+*.csv
+*.zip
+.pt_cache/
+.npy_cache/
+
+# Training outputs (the curated release weight is explicitly retained)
+outputs/
+checkpoints/
+wandb/
+*.pth
+*.pt
+*.t7
+!weights/pcard_pretrained.pth
+
+# Local configuration and credentials
+config.yaml
+.env
+.env.*
+!.env.example
+
+# Python/editor/OS
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Research drafts and large authoring artifacts
+*.fig
+*.docx
+*.pptx
+*.pdf

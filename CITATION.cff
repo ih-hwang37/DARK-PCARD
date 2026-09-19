@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the DARK paper."
+title: "DARK + PCARD"
+type: software
+authors:
+  - family-names: Hwang
+    given-names: Injune
+version: 0.1.0
+date-released: 2026-09-19
+license: MIT
+preferred-citation:
+  type: conference-paper
+  title: "DARK: Dynamic Graphs Based Angle-Aware Registration of Knee Ultrasound Point Clouds"
+  authors:
+    - family-names: Hwang
+      given-names: Injune
+    - family-names: Mellon
+      given-names: Stephen
+    - family-names: Tu
+      given-names: "S. Jack"
+  collection-title: "Simplifying Medical Ultrasound: ASMUS 2025"
+  publisher:
+    name: Springer
+  year: 2026
+  volume: 16165
+  start: 87
+  end: 97
+  doi: 10.1007/978-3-032-06329-8_9
