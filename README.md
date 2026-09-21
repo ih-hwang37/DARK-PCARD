@@ -5,10 +5,10 @@ Knee Ultrasound Point Clouds**, together with the PCARD dynamic-graph encoder,
 its training pipeline, an inference-time point-cloud filter, and a small
 pretrained PCARD checkpoint.
 
-DARK estimates coarse aligment matrices (registration) between sparse, noisy 3D point clouds
-reconstructed from freehand knee ultrasound. PCARD learns pointwise geometric
+DARK estimates coarse aligment matrices between sparse, noisy 3D point clouds
+reconstructed from freehand knee ultrasound. PCARD learns geometric
 features from dynamic k-nearest-neighbour graphs and can be used either to
-filter a point cloud (likewise to DG-PPU) or as DARK's embedding network.
+filter a point cloud (likewise to DG-PPU) or help registration as DARK's embedding network.
 
 > Hwang, I., Mellon, S., and Tu, S. J. (2026). **DARK: Dynamic Graphs Based
 > Angle-Aware Registration of Knee Ultrasound Point Clouds.** In *Simplifying
@@ -19,12 +19,12 @@ filter a point cloud (likewise to DG-PPU) or as DARK's embedding network.
 
 - `dark/`: DARK training and evaluation, including standard, multi-angle, and
   pretrained-PCARD variants.
-- `pcard/`: the PCARD encoder, CSV dataset adapter, covariance utilities, and
+- `pcard/`: the PCARD encoder, covariance utilities, and
   geometry-aware filtering code.
 - `train_pcard.py`: the complete YAML-configured PCARD training pipeline.
 - `filter_with_pcard.py`: a command-line tool that produces DARK-ready CSVs.
 - `weights/pcard_pretrained.pth`: the released PCARD encoder state dictionary.
-- `configs/pcard.yaml`: documented PCARD training defaults (no credentials).
+- `configs/pcard.yaml`: documented PCARD training defaults.
 
 Patient data, generated filtered point clouds, W&B histories, and bulk
 experiment checkpoints are intentionally not included.
@@ -116,7 +116,7 @@ exact split is recorded in `outputs/split_manifest.json`.
 
 W&B is disabled by default. To enable it, set `wandb.mode` to `offline` or
 `online` and authenticate with `wandb login` or the `WANDB_API_KEY` environment
-variable. Never place a key in YAML or commit it to Git.
+variable.
 
 ## Filter point clouds with PCARD
 
@@ -130,7 +130,7 @@ python filter_with_pcard.py --input path/to/private_csv_subject_folders --output
 
 Large groups are deterministically subsampled to 16,384 points by default to
 bound dynamic-kNN memory. Change `--max-points` deliberately and document it in
-experiments. Generated output is ignored by Git.
+experiments.
 
 ## Pretrained PCARD checkpoint
 
@@ -172,7 +172,7 @@ Only the best DARK checkpoint is retained by default. Add
 
 ## Scope and limitations
 
-This is research software for coarse rigid registration and experimental
+This is research software for coarse rigid registration (i.e., estimating coarse alignment matrices) and un-supervised
 point-cloud filtering. It is not a medical device and must not be used for
 diagnosis, treatment, or patient care without independent validation and all
 applicable institutional and regulatory approvals. The published registration
